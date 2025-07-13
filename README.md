@@ -45,8 +45,6 @@ This Python script generates a strong password using a file and a password key. 
 ## License
 
 This project is licensed under the MIT License.
-
-> If you redistribute this script (modified or unmodified), please provide credit to **NoomStuff**.  
 > See the [LICENSE](LICENSE) file for full details.
 
 ---
