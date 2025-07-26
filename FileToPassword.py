@@ -10,7 +10,7 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.backends import default_backend
 
-valid_characters = string.ascii_letters + string.digits + "!@#$%^&*()-_=+?."
+valid_characters = string.ascii_letters + string.digits + "!@#$%^&*()?"
 
 def hash_file(file_path):
     with open(file_path, 'rb') as f:
@@ -21,7 +21,7 @@ def hash_file(file_path):
 def filter_safe_chars(text):
     return ''.join(c for c in text if c in valid_characters)
 
-def generate_password(file_hash, password_key, length=20):
+def generate_password(file_hash, password_key, length=20, base_text="N0@m"):
     file_salt = file_hash[:16]
     
     kdf = PBKDF2HMAC(
@@ -35,8 +35,8 @@ def generate_password(file_hash, password_key, length=20):
     key = kdf.derive(password_key.encode())
     
     generated_password = base64.b85encode(key).decode()
-    generated_password_filtered = filter_safe_chars(generated_password)
-    return generated_password_filtered[:length]
+    generated_password_filtered = filter_safe_chars(generated_password)[:length - 4]
+    return generated_password_filtered + base_text
 
 
 def get_file():
