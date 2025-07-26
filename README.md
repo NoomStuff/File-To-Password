@@ -1,9 +1,9 @@
 # File to Password
 
-Generate a secure password using a file and a key.  
+Generate a secure password using any file and a password key.  
 Made by [NoomStuff](https://github.com/NoomStuff).  
 Licensed under the MIT License. See [LICENSE](LICENSE).  
-You are free to use the project however you want, but please provide credit when redistributing.
+You are free to use the project however you want, it would be appreciated if you would provide credit when modifying, redistributing or showcasing my work.
 
 ---
 
@@ -26,7 +26,7 @@ You are free to use the project however you want, but please provide credit when
 ---
 
 ### How It Works:
-This Python script generates a strong password using a file and a password key. The output of the program can not be decrypted and will always be the same if the input is the same, any small change will give a completely different result.
+This Python script generates a strong password using a file and a password key. The output of the program can not be decrypted and will always be the same if the input is the same, any small change will give a completely different result. The generated password should always pass the requirements for any site.
 
 1. **File Selection**: When running the program, you will be prompted to enter the name of a file. The file must be in the same folder as the script, and you need to include the name and extension of the file (eg. `ExampleFile.png`). Any file type should work.
    
@@ -34,7 +34,7 @@ This Python script generates a strong password using a file and a password key. 
 
 3. **Password Confirmation**: You will be asked to confirm your password key. You can re-enter it or just press enter to skip the confirmation step. It is recommended to confirm the password when creating it for the first time.
 
-4. **Password Generation**: Your file and password key are combined, hashed using SHA-256 (with the file hash as a salt), and encoded using PBKDF2. The resulting password is then base-85 encoded. A filter removes characters that might not be allowed in passwords, and the final password is truncated to 20 characters.
+4. **Password Generation**: Your file and password key are combined, hashed using SHA-256 (with the file hash as a salt), and encoded using PBKDF2. The resulting password is then base-85 encoded. A filter removes special characters that might not be allowed in passwords and adds a base string at the end, before the final password is truncated to 20 characters.
 
 5. **Copying the Password**: Once the password is generated, you can either manually copy it or press enter to automatically copy it to your clipboard and close the program.
 
